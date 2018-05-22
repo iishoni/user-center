@@ -1,9 +1,12 @@
 server:
     port: 8881
+    servlet:
+      context-path: /@project.artifactId@
 
 spring:
     application:
         name: @project.artifactId@@env@
+
     cloud:
         consul:
             host: consul.iishoni.com
