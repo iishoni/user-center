@@ -1,0 +1,4 @@
+swagger:
+    base-package: com.iishoni.usercenter.web
+    base-path: /**
+    exclude-path: /error
