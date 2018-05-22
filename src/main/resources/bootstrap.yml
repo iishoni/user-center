@@ -1,7 +1,5 @@
 server:
     port: 8881
-    servlet:
-      context-path: /@project.artifactId@
 
 spring:
     application:
@@ -14,7 +12,6 @@ spring:
                 instance-id: ${spring.application.name}
                 prefer-ip-address: true
                 ip-address: www.iishoni.com
-                health-check-path: ${server.servlet.context-path}/actuator/health
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
         url: jdbc:mysql://mysql.iishoni.com/test?useUnicode=true&characterEncoding=utf8&useTimezone=true&serverTimezone=CTT&useSSL=false&allowMultiQueries=true
