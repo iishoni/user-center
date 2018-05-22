@@ -21,8 +21,12 @@ public class AdminService {
         return new Page<>(admins, admins.size());
     }
 
-    public Admin getAdminInfo(Long adminId) {
+    public Admin getAdminById(Long adminId) {
         return adminMapper.selectById(adminId);
+    }
+
+    public Admin getAdminByProfile(String uname, String pwd) {
+        return adminMapper.selectByProfile(uname, pwd);
     }
 
     public boolean saveAdmin(Admin admin) {

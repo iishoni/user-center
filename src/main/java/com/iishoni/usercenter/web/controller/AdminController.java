@@ -27,10 +27,17 @@ public class AdminController {
         return new ResponseVo<>(result);
     }
 
-    @ApiOperation("查询用户信息")
-    @GetMapping(Urls.Admin.GET_ADMIN_INFO)
-    public ResponseVo<Admin> getAdminInfo(@PathVariable Long adminId) {
-        Admin result = adminService.getAdminInfo(adminId);
+    @ApiOperation("根据id查询用户信息")
+    @GetMapping(Urls.Admin.GET_ADMIN_BY_ID)
+    public ResponseVo<Admin> getAdminById(@PathVariable Long adminId) {
+        Admin result = adminService.getAdminById(adminId);
+        return new ResponseVo<>(result);
+    }
+
+    @ApiOperation("根据用户名密码查询用户信息")
+    @GetMapping(Urls.Admin.GET_ADMIN_BY_PROFILE)
+    public ResponseVo<Admin> getAdminByProfile(@RequestParam String uname, @RequestParam String pwd) {
+        Admin result = adminService.getAdminByProfile(uname, pwd);
         return new ResponseVo<>(result);
     }
 

@@ -16,6 +16,9 @@ public interface AdminMapper {
     @Select("select * from admin where id = #{adminId}")
     Admin selectById(Long adminId);
 
+    @Select("select * from admin where uname = #{uname} and pwd = #{pwd}")
+    Admin selectByProfile(String uname, String pwd);
+
     @Insert({"insert into admin values (" +
             "#{id}, #{uname}, #{pwd}, #{nick}, #{avatar}, #{role}, " +
             "#{state}, #{lastLoginTime}, #{createBy}, #{createTime}," +
