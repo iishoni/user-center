@@ -7,6 +7,8 @@ import com.iishoni.web.view.Page;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -30,10 +32,13 @@ public class AdminService {
     }
 
     public boolean saveAdmin(Admin admin) {
+        admin.setCreateTime(new Date());
+        admin.setState("enable");
         return adminMapper.insert(admin);
     }
 
     public boolean updateAdmin(Admin admin) {
+        admin.setUpdateTime(new Date());
         return adminMapper.update(admin);
     }
 
