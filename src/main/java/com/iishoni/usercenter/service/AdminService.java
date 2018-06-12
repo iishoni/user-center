@@ -1,48 +1,47 @@
 package com.iishoni.usercenter.service;
 
-import com.github.pagehelper.PageHelper;
 import com.iishoni.usercenter.mapper.AdminMapper;
 import com.iishoni.usercenterapi.model.Admin;
 import com.iishoni.web.view.Page;
+
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import javax.annotation.Resource;
 
-import java.util.Date;
-import java.util.List;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class AdminService {
 
     @Resource
     private AdminMapper adminMapper;
 
     public Page<Admin> getAdminsByPage(Integer pageNum, Integer pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        List<Admin> admins = adminMapper.selectAll();
+//        PageHelper.startPage(pageNum, pageSize);
+        List<Admin> admins = adminMapper.all(pageNum, pageSize);
         return new Page<>(admins, admins.size());
     }
 
     public Admin getAdminById(Long adminId) {
-        return adminMapper.selectById(adminId);
+        return adminMapper.single(adminId);
     }
 
     public Admin getAdminByProfile(String uname, String pwd) {
-        return adminMapper.selectByProfile(uname, pwd);
+        return adminMapper.select(uname, pwd);
     }
 
-    public boolean saveAdmin(Admin admin) {
-        admin.setCreateTime(new Date());
-        admin.setState("enable");
-        return adminMapper.insert(admin);
+    public void saveAdmin(Admin admin) {
+        adminMapper.insertTemplate(admin, true);
     }
 
-    public boolean updateAdmin(Admin admin) {
-        admin.setUpdateTime(new Date());
-        return adminMapper.update(admin);
+    public void updateAdmin(Admin admin) {
+        adminMapper.updateTemplateById(admin);
     }
 
-    public boolean deleteAdmin(Long adminId) {
-        return adminMapper.deleteById(adminId);
+    public void deleteAdmin(Long adminId) {
+        adminMapper.deleteById(adminId);
     }
 }

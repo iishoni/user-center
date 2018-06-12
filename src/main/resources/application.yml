@@ -2,3 +2,10 @@ swagger:
     base-package: com.iishoni.usercenter.web
     base-path: /**
     exclude-path: /error
+
+beetlsql:
+#    sqlPath: /sql
+#    nameConversion: org.beetl.sql.core.UnderlinedNameConversion
+#    dev: true
+    daoSuffix: Mapper
+    basePackage: com.iishoni.usercenter.mapper

@@ -7,7 +7,7 @@ Configuration:
         value: debug
       - name: log.path
         value: /app/cloud/logs/
-#        value: D:\logs
+#        value: /Users/dxk/Documents/logs/
       - name: project.name
         value: user-center
       - name: log.pattern
