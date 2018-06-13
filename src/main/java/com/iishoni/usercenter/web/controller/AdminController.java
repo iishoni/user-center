@@ -19,10 +19,11 @@ public class AdminController {
     @Resource
     private AdminService adminService;
 
-    @ApiOperation("查询用户列表")
+    @ApiOperation("分页获取用户列表")
     @GetMapping(Urls.Admin.GET_ADMIN_LIST)
     public ResponseVo<Page<Admin>> getAdminList(
-            @RequestParam Integer pageNum, @RequestParam Integer pageSize) {
+            @RequestParam Long pageNum,
+            @RequestParam Long pageSize) {
         Page<Admin> result = adminService.getAdminsByPage(pageNum, pageSize);
         return new ResponseVo<>(result);
     }

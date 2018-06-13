@@ -1,4 +1,4 @@
-package com.iishoni.usercenter.config;
+package com.iishoni.usercenter.mapper;
 
 import org.beetl.sql.core.ClasspathLoader;
 import org.beetl.sql.core.ConnectionSourceHelper;

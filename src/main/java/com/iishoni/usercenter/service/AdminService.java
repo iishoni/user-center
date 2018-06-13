@@ -4,9 +4,9 @@ import com.iishoni.usercenter.mapper.AdminMapper;
 import com.iishoni.usercenterapi.model.Admin;
 import com.iishoni.web.view.Page;
 
+import org.beetl.sql.core.engine.PageQuery;
+import org.beetl.sql.core.query.LambdaQuery;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -19,10 +19,10 @@ public class AdminService {
     @Resource
     private AdminMapper adminMapper;
 
-    public Page<Admin> getAdminsByPage(Integer pageNum, Integer pageSize) {
-//        PageHelper.startPage(pageNum, pageSize);
-        List<Admin> admins = adminMapper.all(pageNum, pageSize);
-        return new Page<>(admins, admins.size());
+    public Page<Admin> getAdminsByPage(long pageNum, long pageSize) {
+        PageQuery<Admin> query = new PageQuery<>(pageNum, pageSize);
+        adminMapper.templatePage(query);
+        return new Page<>(query.getList(), query.getTotalRow());
     }
 
     public Admin getAdminById(Long adminId) {
@@ -30,7 +30,10 @@ public class AdminService {
     }
 
     public Admin getAdminByProfile(String uname, String pwd) {
-        return adminMapper.select(uname, pwd);
+        LambdaQuery<Admin> query = adminMapper.createLambdaQuery();
+        return query.andEq(Admin::getUname, uname)
+                .andEq(Admin::getPwd, pwd)
+                .single();
     }
 
     public void saveAdmin(Admin admin) {
