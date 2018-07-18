@@ -5,7 +5,7 @@ pipeline:
       - /data:/data
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - sh /data/shell/clean.sh user-center-dev
+      - sh /data/shell/clean.sh user-center
   build:
     image: quay.io/dxk19911212/iishoni-maven
     volumes:
@@ -19,6 +19,6 @@ pipeline:
       - /data:/data
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - sh /data/shell/setup.sh user-center-dev 8881
+      - sh /data/shell/setup.sh user-center 8881
 
-branches: dev
+branches: master
