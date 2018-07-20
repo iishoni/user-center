@@ -21,4 +21,4 @@ pipeline:
     commands:
       - sh /data/shell/setup.sh user-center-dev 8882
 
-branches: master
+branches: dev
