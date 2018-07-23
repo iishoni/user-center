@@ -42,7 +42,7 @@
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.3.6</version>
                 <configuration>
-                    <repository>quay.io/dxk19911212/${project.artifactId}-dev</repository>
+                    <repository>quay.io/dxk19911212/${project.artifactId}</repository>
                     <buildArgs>
                         <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>
