@@ -22,3 +22,5 @@ pipeline:
       - sh /data/shell/setup.sh user-center 8881
 
 branches: master
+
+temp
